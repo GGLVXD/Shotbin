@@ -1,4 +1,9 @@
     <!-- Navbar -->
+
+    <!-- fix later structure of this monstorcity-->
+        <div class="drawer lg:drawer-open">
+  <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
     <nav class="navbar w-full bg-base-300">
       <label for="my-drawer-4" aria-label="open sidebar" class="btn btn-square btn-ghost">
         <!-- Sidebar toggle icon -->
