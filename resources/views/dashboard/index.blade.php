@@ -15,7 +15,10 @@
     <!-- Navbar -->
     <x-dashboard.navbar></x-dashboard.navbar>
     <!-- Page content -->
-    <div class="p-4">Page Content</div>
+    <div class="p-4">
+      Welcome {{ Auth::user()->name }}
+    </div>
+
   <!-- part of navbar monstrocity -->
   </div>
   <!-- Sidebar -->
