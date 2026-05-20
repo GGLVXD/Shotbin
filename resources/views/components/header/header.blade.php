@@ -18,7 +18,7 @@
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl">Shotbox</a>
+    <a class="btn btn-ghost text-xl">Shotbin</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">

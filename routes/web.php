@@ -1,5 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Input;
+
+use Illuminate\Support\Facades\Storage;
+
+use App\Http\Controllers\UploadController;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\Register;
@@ -7,17 +13,16 @@ use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 
 Route::get('/', function () {
-    return view('homepage/index');
+    return view('homepage.index');
 });
 
-$user = Auth::user();
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard/index');
+        return view('dashboard.index');
     });
     Route::get('/dashboard/files', function () {
-        return view('dashboard/filemanager/index');
+        return view('dashboard.filemanager.index');
     });
 });
 
@@ -39,3 +44,9 @@ Route::post('/signin', Login::class)
 Route::post('/signout', Logout::class)
     ->middleware('auth')
     ->name('logout');
+
+Route::get('/upload', function () {
+    return view('upload.index');
+});
+
+Route::post('/upload', [UploadController::class, 'store'])->name('file.upload');

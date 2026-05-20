@@ -1,4 +1,5 @@
-    <!-- Navbar -->
+
+<!-- Navbar -->
 
     <!-- fix later structure of this monstorcity-->
         <div class="drawer lg:drawer-open">
@@ -11,9 +12,17 @@
       </label>
       <div class="px-4">Navbar Title</div>
       <!-- Profile avatar/icon -->
-        <div class="avatar top-0 right-0 absolute">
+        <div onclick="showProfileMenu()" style="cursor: pointer;" class="avatar top-0 right-0 absolute mt-2 mr-2">
             <div class="w-12 rounded-full object-center justify-center items-center">
                 <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" height="32" width="32" />
             </div>
+        </div>
+        <div style="display:none" id="menu">
+          <ul class="menu bg-base-200 rounded-box w-56">
+            <li class="menu-title">Title</li>
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li><a>Item 3</a></li>
+          </ul>
         </div>
     </nav>
