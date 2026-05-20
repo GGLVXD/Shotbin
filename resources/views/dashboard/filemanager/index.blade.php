@@ -15,7 +15,7 @@
     <!-- Navbar -->
     <x-dashboard.navbar></x-dashboard.navbar>
     <!-- Page content -->
-    <div class="p-4">Page Content</div>
+    <x-dashboard.filelist></x-dashboard.filelist>
   <!-- part of navbar monstrocity -->
   </div>
   <!-- Sidebar -->
