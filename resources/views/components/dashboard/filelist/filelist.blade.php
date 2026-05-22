@@ -1,8 +1,8 @@
 @php
 $files = [
-    ['name' => 'AAAAAA.png'],
-    ['name' => 'legitfile.exe'],
-    ['name' => 'Ben.jpg']
+    ['name' => 'AAAAAA.png', 'size' => 10245],
+    ['name' => 'lol.exe', 'size' => 123412],
+    ['name' => 'Ben.jpg', 'size' => 523523]
 ];
 @endphp
 
@@ -16,6 +16,7 @@ $files = [
             <div>
                 <div>{{ $file["name"] }}</div>
             </div>
+            <p>123 bytes</p>
             <button class="btn btn-square btn-ghost">
             <img src="/icons/more.png" height="16" width="16">
         </button>
