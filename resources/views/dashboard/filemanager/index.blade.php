@@ -9,13 +9,10 @@
 <body>
 
     <!-- part of navbar monstrocity -->
-    <div class="drawer lg:drawer-open">
-  <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content">
     <!-- Navbar -->
-    <x-dashboard.navbar></x-dashboard.navbar>
-    <!-- Page content -->
+    <x-dashboard.navbar>
     <x-dashboard.filelist></x-dashboard.filelist>
+    </x-dashboard.navbar>
   <!-- part of navbar monstrocity -->
   </div>
   <!-- Sidebar -->

@@ -13,14 +13,13 @@
   <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content">
     <!-- Navbar -->
-    <x-dashboard.navbar></x-dashboard.navbar>
+    <x-dashboard.navbar>
     <!-- Page content -->
     <div class="p-4">
       Welcome {{ Auth::user()->name }}
     </div>
-
+</x-dashboard.navbar>
   <!-- part of navbar monstrocity -->
-  </div>
   <!-- Sidebar -->
   <x-dashboard.sidebar></x-dashboard.sidebar>
 </div>
