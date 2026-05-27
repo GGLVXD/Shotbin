@@ -18,7 +18,7 @@
     <div class="p-4">
       Welcome {{ Auth::user()->name }}
     </div>
-</x-dashboard.navbar>
+  </x-dashboard.navbar>
   <!-- part of navbar monstrocity -->
   <!-- Sidebar -->
   <x-dashboard.sidebar></x-dashboard.sidebar>
