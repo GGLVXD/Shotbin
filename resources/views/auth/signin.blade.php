@@ -11,14 +11,14 @@
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div class="card-body">
-        <h1 class="text-5xl font-bold">Login</h1>
+        <h1 class="text-4xl text-center font-bold">Login</h1>
         <form method="POST" method="/signin">
           @csrf
           <fieldset class="fieldset">
             <label class="label">Email</label>
                               <input type="email"
                                     name="email"
-                                    placeholder="[mail@example.com](<mailto:mail@example.com>)"
+                                    placeholder="mail@example.com"
                                     value="{{ old('email') }}"
                                     class="input input-bordered @error('email') input-error @enderror"
                                     required

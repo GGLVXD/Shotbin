@@ -9,9 +9,9 @@
 <body>
     <div class="hero bg-base-200 min-h-screen">
   <div class="hero-content flex-col lg:flex-row-reverse">
-    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div class="card bg-base-100 w-full h-full max-w-sm shrink-0 shadow-2xl">
       <div class="card-body">
-        <h1 class="text-5xl font-bold">Register now!</h1>
+        <h1 class="text-4xl text-center font-bold">Register now!</h1>
         <form method="POST" action="/signup">
           @csrf
           <fieldset class="fieldset">
@@ -25,7 +25,7 @@
             <label class="label">Email</label>
             <input type="email"
         name="email"
-        placeholder="[mail@example.com](<mailto:mail@example.com>)"
+        placeholder="mail@example.com"
         value="{{ old('email') }}"
         class="input input-bordered @error('email') input-error @enderror"
         required>
