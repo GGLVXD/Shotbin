@@ -21,8 +21,8 @@ class Login extends Controller
             // Regenerate session for security
             $request->session()->regenerate();
 
-            // Redirect to intended page or home
-            return redirect()->intended('/')->with('success');
+            // Redirect to dashboard with success
+            return redirect()->intended('/dashboard')->with('success');
         }
 
         // If login fails, redirect back with error

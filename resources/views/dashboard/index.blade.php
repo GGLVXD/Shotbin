@@ -24,4 +24,5 @@
   <x-dashboard.sidebar></x-dashboard.sidebar>
 </div>
 </body>
+<script type="text/javascript" src="{{secure_asset('js/navbar/showprofilemenu.js') }}"></script>
 </html>

@@ -29,7 +29,7 @@ class Register extends Controller
         // Log them in
         Auth::login($user);
 
-        // Redirect to home
+        // Redirect to dashboard with success
         return redirect('/dashboard')->with('success');
     }
 }
