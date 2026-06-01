@@ -8,10 +8,6 @@
 </head>
 <body>
 
-    <!-- part of navbar monstrocity -->
-    <div class="drawer lg:drawer-open">
-  <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content">
     <!-- Navbar -->
     <x-dashboard.navbar>
     <!-- Page content -->
@@ -22,7 +18,5 @@
   <!-- part of navbar monstrocity -->
   <!-- Sidebar -->
   <x-dashboard.sidebar></x-dashboard.sidebar>
-</div>
 </body>
-<script type="text/javascript" src="{{secure_asset('js/navbar/showprofilemenu.js') }}"></script>
 </html>

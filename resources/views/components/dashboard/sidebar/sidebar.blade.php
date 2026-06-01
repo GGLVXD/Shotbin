@@ -23,3 +23,4 @@
         </ul>
     </div>
 </div>
+<script src="js/showprofilemenu.js"></script>
