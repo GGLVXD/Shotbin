@@ -19,16 +19,24 @@ class FilesController extends Controller
 
         $file = Files::find($id);
 
+        // file existance check
+        if (!$file) {
+            abort(404);
+        }
+
         //check the ownership of file
         if($file->user_id != Auth::id()){
             return response()->json(null, 403);
         }
 
-        if (!$file) {
-            abort(404);
-        }
 
-        $file->delete();
+        // delete the file
+        $deleteFile = Files::deleteFileEntry($id, Auth::user());
+
+        // sanity check
+        if ($deleteFile != true) {
+            response()->json(null, 500);
+        }
 
         return response()->json(null, 204);
     }

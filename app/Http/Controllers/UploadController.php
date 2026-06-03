@@ -23,7 +23,7 @@ class UploadController extends Controller
         // Store the file
         $path = $request->file('file')->store('uploads', 's3');
          // store in database
-        Files::CreateFileEntry($request->user(), $uploadedFile, $path);
+        Files::createFileEntry($request->user(), $uploadedFile, $path);
 
         // Return success message
         return back()
