@@ -20,6 +20,7 @@
                             <img src="/icons/more.png" height="16" width="16" alt="More options" />
                         </div>
                         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
+                            <li><a href="{{ route('files.view', $file->url_id) }}" target="_blank" rel="noopener">View</a></li>
                             <li><button type="submit">Delete</button></li>
                         </ul>
                     </form>

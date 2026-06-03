@@ -5,13 +5,14 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\FilesController;
+use App\Http\Controllers\ViewController;
 
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
-use App\Http\Controllers\FilesController;
 
 Route::get('/', function () {
     return view('homepage.index');
@@ -52,3 +53,6 @@ Route::get('/upload', function () {
 });
 
 Route::post('/upload', [UploadController::class, 'store'])->name('file.upload');
+
+Route::get('/view/{urlId}', [ViewController::class, 'index']);
+Route::get('/view/{urlId}/download', [FilesController::class, 'download'])->name('files.download');

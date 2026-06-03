@@ -1,0 +1,1 @@
+<img src={{ config('filesystems.disks.s3.url').'/'.$file->path }}> </img>
