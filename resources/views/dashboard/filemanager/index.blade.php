@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
     <x-dashboard.navbar>
-        <x-dashboard.filelist></x-dashboard.filelist>
+        <x-dashboard.filelist :files="$files"></x-dashboard.filelist>
     </x-dashboard.navbar>
     <script src="/js/showprofilemenu.js"></script>
 </body>

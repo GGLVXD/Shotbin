@@ -22,12 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     });
-    Route::get('/dashboard/files', function () {
-        return view('dashboard.filemanager.index');
-    });
+    Route::get('/dashboard/files', [FilesController::class, 'index']);
 });
 
-Route::get('/files', [FilesController::class, 'index']);
 Route::delete('/files/{id}', [FilesController::class, 'destroy']);
 
 

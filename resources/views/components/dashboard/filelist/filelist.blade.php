@@ -1,11 +1,4 @@
-@php
-$files = [
-    ['name' => 'AAAAAA.png', 'size' => 10245],
-    ['name' => 'lol.exe', 'size' => 123412],
-    ['name' => 'Ben.jpg', 'size' => 523523]
-];
-@endphp
-
+@props(['files'])
 
 <div class="p-4">
     <ul class="list bg-base-100 rounded-box shadow-md">
@@ -14,7 +7,7 @@ $files = [
     <li class="list-row">
         <div><img class="size-10 rounded-box" src="https://placehold.co/40x40"/></div>
             <div>
-                <div>{{ $file["name"] }}</div>
+                <div>{{ $file->name }}</div>
             </div>
             <p>123 bytes</p>
             <button class="btn btn-square btn-ghost">
