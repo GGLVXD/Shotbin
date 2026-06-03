@@ -20,9 +20,9 @@ class UploadController extends Controller
             'file' => 'required|mimes:jpg,png,pdf|max:2048',
         ]);
         $uploadedFile = $request->file('file');
-        // Store file inside storage/app/public/uploads
-        $path = $request->file('file')->store('uploads', 'public');
-        // store in database
+        // Store the file
+        $path = $request->file('file')->store('uploads', 's3');
+         // store in database
         Files::CreateFileEntry($request->user(), $uploadedFile, $path);
 
         // Return success message
