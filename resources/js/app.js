@@ -1,3 +1,4 @@
+import './navbar/showprofilemenu.js';
 document.addEventListener('submit', async (event) => {
 	const form = event.target;
 

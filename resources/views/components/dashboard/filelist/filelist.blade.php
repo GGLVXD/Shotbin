@@ -1,3 +1,4 @@
+@vite(['resources/js/app.js'])
 @props(['files'])
 
 <div class="p-4">
@@ -10,7 +11,7 @@
                 <div>
                     <div>{{ $file->name }}</div>
                 </div>
-                <p>123 bytes</p>
+                <p>{{ \App\Models\Files::formatFileSize($file) }}</p>
                 <div class="dropdown dropdown-end">
                     <form action="/dashboard/files/{{ $file->id }}" method="POST" data-delete-file-form>
                         @csrf

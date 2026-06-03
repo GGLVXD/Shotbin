@@ -26,6 +26,20 @@ class Files extends Model
             'size' => $fileSize,
         ]);
     }
+    // format file sizes for non byte readers
+    public static function formatFileSize($file){
+        $fileSize = $file->size;
+
+        if ($fileSize >= 1000000000) {
+            return round($fileSize / 1000000000, 2) . 'GB';
+        } elseif ($fileSize >= 1000000) {
+            return round($fileSize / 1000000, 2) . 'MB';
+        } elseif ($fileSize >= 1000) {
+            return round($fileSize / 1000, 2) . 'KB';
+        }
+
+        return $fileSize.'B';
+    }
     // delete the file
     public static function deleteFileEntry($id, $user){
         $file = self::find($id);
