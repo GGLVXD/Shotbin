@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/files', [FilesController::class, 'index']);
+Route::delete('/files/{id}', [FilesController::class, 'destroy']);
+
 
 Route::view('/signup', 'auth.signup')
     ->middleware('guest')

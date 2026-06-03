@@ -7,16 +7,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-
-    <!-- Navbar -->
     <x-dashboard.navbar>
-    <!-- Page content -->
-    <div class="p-4">
-      Welcome {{ Auth::user()->name }}
-    </div>
-  </x-dashboard.navbar>
-  <!-- part of navbar monstrocity -->
-  <!-- Sidebar -->
-  <x-dashboard.sidebar></x-dashboard.sidebar>
+        Welcome {{ Auth::user()->name }}
+    </x-dashboard.navbar>
+    <script src="/js/showprofilemenu.js"></script>
 </body>
 </html>

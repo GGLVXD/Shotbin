@@ -11,4 +11,17 @@ class FilesController extends Controller
         $files = Files::all();
         return response()->json($files);
     }
+
+    public function destroy(){
+
+        $file = Files::find(request("id"));
+        if (!$file) {
+            abort(404);
+        }
+
+        $file->delete();
+
+        return response()->json(null, 204);
+    }
 }
+

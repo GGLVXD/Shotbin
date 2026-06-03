@@ -7,16 +7,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-
-    <!-- part of navbar monstrocity -->
-    <!-- Navbar -->
     <x-dashboard.navbar>
-    <x-dashboard.filelist></x-dashboard.filelist>
+        <x-dashboard.filelist></x-dashboard.filelist>
     </x-dashboard.navbar>
-  <!-- part of navbar monstrocity -->
-  </div>
-  <!-- Sidebar -->
-  <x-dashboard.sidebar></x-dashboard.sidebar>
-</div>
+    <script src="/js/showprofilemenu.js"></script>
 </body>
 </html>
