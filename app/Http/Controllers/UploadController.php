@@ -20,10 +20,11 @@ class UploadController extends Controller
             'file' => 'required|mimes:jpg,png,pdf|max:2048',
         ]);
         $uploadedFile = $request->file('file');
+        $fileSize = $request->file('file')->getSize();
         // Store the file
         $path = $request->file('file')->store('uploads', 's3');
          // store in database
-        Files::createFileEntry($request->user(), $uploadedFile, $path);
+        Files::createFileEntry($request->user(), $uploadedFile, $path, $fileSize);
 
         // Return success message
         return back()
