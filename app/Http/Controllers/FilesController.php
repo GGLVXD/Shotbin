@@ -15,9 +15,15 @@ class FilesController extends Controller
         return view('dashboard.filemanager.index', compact('files'));
     }
 
-    public function destroy(){
+    public function destroy($id){
 
-        $file = Files::find(request("id"));
+        $file = Files::find($id);
+
+        //check the ownership of file
+        if($file->user_id != Auth::id()){
+            return response()->json(null, 403);
+        }
+
         if (!$file) {
             abort(404);
         }

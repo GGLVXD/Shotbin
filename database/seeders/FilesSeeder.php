@@ -8,9 +8,7 @@ use App\Models\files;
 
 class FilesSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    // outdated and isnt planned on updating
     public function run(): void
     {
         $faker = \Faker\Factory::create();

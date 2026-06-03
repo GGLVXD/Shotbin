@@ -23,9 +23,9 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.index');
     });
     Route::get('/dashboard/files', [FilesController::class, 'index']);
+    Route::delete('/dashboard/files/{id}', [FilesController::class, 'destroy']);
 });
 
-Route::delete('/files/{id}', [FilesController::class, 'destroy']);
 
 
 Route::view('/signup', 'auth.signup')
