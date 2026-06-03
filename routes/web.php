@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\FilesController;
 
 Route::get('/', function () {
     return view('homepage.index');
@@ -25,6 +26,8 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.filemanager.index');
     });
 });
+
+Route::get('/files', [FilesController::class, 'index']);
 
 Route::view('/signup', 'auth.signup')
     ->middleware('guest')
