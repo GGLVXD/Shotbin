@@ -48,21 +48,20 @@ class Files extends Model
         $file = self::find($id);
 
         
-        
+        // check if file exists in database
         if(!$file){
             return false;
         }
 
         // check file ownership
-
         if($file->user_id != $user->id){
             return false;
         }
         
         $deletedFromStorage = Storage::disk('s3')->delete($file->path);
-        // check if file deleted on s3 then delete on database
+        // check if file deleted on s3 then delete in database
         if ($deletedFromStorage) {
-            self::where('id', $id)->delete(); // delete on database
+            self::where('id', $id)->delete(); // delete in database
             return true;
         }
         return false;

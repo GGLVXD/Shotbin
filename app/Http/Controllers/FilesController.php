@@ -19,14 +19,14 @@ class FilesController extends Controller
 
         $file = Files::find($id);
 
-        // file existance check
+        // check if file exists
         if (!$file) {
             abort(404);
         }
 
-        //check the ownership of file
+        // check the ownership of file
         if($file->user_id != Auth::id()){
-            return response()->json(null, 403);
+            return response()->json(false, 403);
         }
 
 
@@ -35,10 +35,10 @@ class FilesController extends Controller
 
         // sanity check
         if ($deleteFile == false) {
-            return response()->json(true, 500);
+            return response()->json(false, 500);
         }
 
-        return response()->json(null, 204);
+        return response()->json(true, 204);
     }
 }
 
