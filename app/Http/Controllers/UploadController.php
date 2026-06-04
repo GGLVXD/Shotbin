@@ -17,7 +17,6 @@ public function store(Request $request)
 {
     $request->validate([
         'files' => 'required|array|min:1',
-        'files.*' => 'mimes:jpg,png,pdf|max:2048',
     ]);
 
     $uploadedFiles = [];
@@ -30,7 +29,7 @@ public function store(Request $request)
         $path = $uploadedFile->store('uploads', 's3');
 
         // create a file entry in database
-        $fileModel = Files::createFileEntry($request->user() ,$uploadedFile ,$path ,$fileSize);
+        $fileModel = Files::createFileEntry($request->user(), $uploadedFile, $path, $fileSize);
 
         $uploadedFiles[] = [
             'url_id' => $fileModel->url_id,

@@ -6,8 +6,7 @@
 </div>
         <div id="menu" class="hidden absolute right-0 top-full mt-1 mr-2 z-50">
     <ul class="menu bg-base-200 rounded-box w-56 shadow-lg">
-    <li><a href="/dashboard">Dashboard</a></li>
-    <li><a>Profile</a></li>
+    <button><li><a href="/dashboard">Dashboard</a></li></button>
     <form action="/signout" method="POST">
         <button><li><a>Logout</a></li></button>
     </form>

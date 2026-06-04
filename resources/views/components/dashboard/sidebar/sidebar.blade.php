@@ -1,6 +1,7 @@
   <div class="drawer-side">
     <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
     <div class="flex min-h-full flex-col items-start bg-base-200 w-64">
+        <a href="/" class="w-full px-4 py-4 text-center text-xl font-bold">Shotbin</a>
       <!-- Sidebar content -->
       <ul class="menu w-full grow">
         <!-- List item -->

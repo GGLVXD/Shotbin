@@ -24,7 +24,7 @@ class Files extends Model
             'name' => $file->getClientOriginalName(),
             'user_id' => $user->id,
             'path' => $path,
-            'expire_at' => self::FileExpiry(),
+            'expire_at' => null, //self::FileExpiry()
             'url_id' => Str::random(16),
             'size' => $fileSize,
         ]);
