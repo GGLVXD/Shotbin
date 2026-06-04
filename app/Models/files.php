@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,7 +24,7 @@ class Files extends Model
             'name' => $file->getClientOriginalName(),
             'user_id' => $user->id,
             'path' => $path,
-            'expire_at' => self::FileExpiry($user),
+            'expire_at' => self::FileExpiry(),
             'url_id' => Str::random(16),
             'size' => $fileSize,
         ]);
@@ -46,16 +47,20 @@ class Files extends Model
     public static function deleteFileEntry($id, $user){
         $file = self::find($id);
 
+        
+        
         if(!$file){
             return false;
         }
+
         // check file ownership
-        if($file->file_id != $user->id){
+
+        if($file->user_id != $user->id){
             return false;
         }
-
+        
         $deletedFromStorage = Storage::disk('s3')->delete($file->path);
-        // check if file deleted on s3
+        // check if file deleted on s3 then delete on database
         if ($deletedFromStorage) {
             self::where('id', $id)->delete(); // delete on database
             return true;
@@ -66,8 +71,7 @@ class Files extends Model
 
         return now()->addDays(30);
     }
-
-
+    // get total count of files for user
     public static function countTotal($user_id){
         return self::where('user_id', $user_id)->count();
     }

@@ -34,8 +34,8 @@ class FilesController extends Controller
         $deleteFile = Files::deleteFileEntry($id, Auth::user());
 
         // sanity check
-        if ($deleteFile != true) {
-            response()->json(null, 500);
+        if ($deleteFile == false) {
+            return response()->json(true, 500);
         }
 
         return response()->json(null, 204);
