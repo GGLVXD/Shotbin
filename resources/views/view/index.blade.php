@@ -1,1 +1,3 @@
-<img src={{ config('filesystems.disks.s3.url').'/'.$file->path }}> </img>
+<a href="/api/downloadfile/{{ $file->url_id }}">
+    <button>Download</button>
+</a>
