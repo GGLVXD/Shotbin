@@ -17,6 +17,7 @@ public function store(Request $request)
 {
     $request->validate([
         'files' => 'required|array|min:1',
+        'files.*' => 'required|file|max:102400',
     ]);
 
     $uploadedFiles = [];

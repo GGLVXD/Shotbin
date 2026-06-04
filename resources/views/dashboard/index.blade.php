@@ -7,12 +7,50 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <x-dashboard.navbar>
-        Welcome {{ Auth::user()->name }} <br>
-        <div class="w-32 h-16 box">
-            Total files: {{ \App\Models\Files::countTotal(Auth::user()->id) }}
+<x-dashboard.navbar>
+    <div class="p-6 space-y-6">
+
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-semibold">
+                Welcome {{ Auth::user()->name }}
+            </h1>
         </div>
-    </x-dashboard.navbar>
+
+        @php
+            $userId = Auth::user()->id;
+
+            $totalFiles = \App\Models\Files::where('user_id', $userId)->count();
+
+            $totalSizeBytes = \App\Models\Files::where('user_id', $userId)->sum('size');
+
+            $totalSizeGB = number_format($totalSizeBytes / 1024 / 1024 / 1024, 2);
+        @endphp
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+            <!-- Files -->
+            <div class="bg-white rounded-xl shadow-sm border-l-4 border-blue-500 p-5 flex items-center gap-4">
+                <div class="text-blue-500 text-3xl"><img height="32px" width="32px" src="/icons/file.png"></img></div>
+                <div>
+                    <div class="text-sm text-gray-500 uppercase">Total Files</div>
+                    <div class="text-2xl font-bold">{{ $totalFiles }}</div>
+                </div>
+            </div>
+
+
+            <!-- Storage -->
+            <div class="bg-white rounded-xl shadow-sm border-l-4 border-blue-500 p-5 flex items-center gap-4">
+                <div class="text-blue-500 text-3xl"><img height="32px" width="32px" src="/icons/database.png"></img></div>
+                <div>
+                    <div class="text-sm text-gray-500 uppercase">Storage Used</div>
+                    <div class="text-2xl font-bold">{{ $totalSizeGB }} GB</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</x-dashboard.navbar>
     <script src="/js/showprofilemenu.js"></script>
 </body>
 </html>
