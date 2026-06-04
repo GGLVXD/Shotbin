@@ -35,8 +35,10 @@ class DownloadFile extends Controller
 
 
         // redirect to s3 bucket url with auto download
-        return redirect()->away(config('filesystems.disks.s3.url').'/'.$file->path.'?response-content-disposition=attachment');
-        }
+        return response()->json([
+            'url' => config('filesystems.disks.s3.url').'/'.$file->path
+        ]);     
+    }
 
     /**
      * Update the specified resource in storage.
