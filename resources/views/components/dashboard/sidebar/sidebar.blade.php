@@ -21,9 +21,9 @@
           </a>
         </li>
         <li>
-          <a href="/upload" class="tooltip tooltip-right" data-tip="Files">
+          <a href="/upload" class="tooltip tooltip-right" data-tip="Upload">
             <!-- Upload icon -->
-            <img src="/icons/upload.png" width="16" height="16" alt="Files">
+            <img src="/icons/upload.png" width="16" height="16" alt="Upload">
             <span>Upload</span>
           </a>
         </li>

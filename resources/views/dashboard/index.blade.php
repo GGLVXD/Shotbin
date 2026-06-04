@@ -9,7 +9,9 @@
 <body>
     <x-dashboard.navbar>
         Welcome {{ Auth::user()->name }} <br>
-        Total files: {{ \App\Models\Files::countTotal(Auth::user()->id) }}
+        <div class="w-32 h-16 box">
+            Total files: {{ \App\Models\Files::countTotal(Auth::user()->id) }}
+        </div>
     </x-dashboard.navbar>
     <script src="/js/showprofilemenu.js"></script>
 </body>

@@ -13,22 +13,35 @@ class UploadController extends Controller
         return view('upload.index');
     }
 
-    public function store(Request $request)
-    {
-        // Validate file
-        $request->validate([
-            'file' => 'required|mimes:jpg,png,pdf|max:2048',
-        ]);
-        $uploadedFile = $request->file('file');
-        $fileSize = $request->file('file')->getSize();
-        // Store the file
-        $path = $request->file('file')->store('uploads', 's3');
-         // store in database
-        Files::createFileEntry($request->user(), $uploadedFile, $path, $fileSize);
+public function store(Request $request)
+{
+    $request->validate([
+        'files' => 'required|array|min:1',
+        'files.*' => 'mimes:jpg,png,pdf|max:2048',
+    ]);
 
-        // Return success message
-        return back()
-            ->with('success', 'File uploaded successfully!')
-            ->with('file', $path);
+    $uploadedFiles = [];
+
+    foreach ($request->file('files') as $uploadedFile) {
+        // file size
+        $fileSize = $uploadedFile->getSize();
+
+        // upload to s3
+        $path = $uploadedFile->store('uploads', 's3');
+
+        // create a file entry in database
+        $fileModel = Files::createFileEntry($request->user() ,$uploadedFile ,$path ,$fileSize);
+
+        $uploadedFiles[] = [
+            'url_id' => $fileModel->url_id,
+            'path' => $path,
+            'name' => $uploadedFile->getClientOriginalName(),
+        ];
     }
+
+    return response()->json([
+        'success' => true,
+        'files' => $uploadedFiles,
+    ]);
+}
 }
