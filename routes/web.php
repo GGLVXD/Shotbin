@@ -55,3 +55,4 @@ Route::get('/upload', function () {
 Route::post('/upload', [UploadController::class, 'store'])->name('file.upload');
 
 Route::get('/view/{urlId}', [ViewController::class, 'index']);
+Route::get('/view/{urlId}/download', [ViewController::class, 'download']);
