@@ -29,7 +29,7 @@ public function store(Request $request)
         $path = $uploadedFile->store('uploads', 's3');
 
         // create a file entry in database
-        $fileModel = Files::createFileEntry($request->user(), $uploadedFile, $path, $fileSize);
+        $fileModel = Files::createFileEntry($request->user()?->id, $uploadedFile, $path, $fileSize);
 
         $uploadedFiles[] = [
             'url_id' => $fileModel->url_id,

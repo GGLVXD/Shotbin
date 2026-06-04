@@ -19,10 +19,10 @@ class Files extends Model
     protected $fillable = ['name', 'user_id', 'path', 'expire_at', 'url_id', 'size'];
 
     // Creates a new entry in file in files table
-    public static function createFileEntry($user, $file, $path, $fileSize){
+    public static function createFileEntry(?int $userId, $file, $path, $fileSize){
         return self::create([
             'name' => $file->getClientOriginalName(),
-            'user_id' => $user->id,
+            'user_id' => $userId,
             'path' => $path,
             'expire_at' => null, //self::FileExpiry()
             'url_id' => Str::random(16),
