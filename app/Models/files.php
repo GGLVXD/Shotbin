@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -60,8 +62,13 @@ class Files extends Model
         }
         return false;
     }
-    protected static function FileExpiry($user){
+    protected static function FileExpiry(){
 
         return now()->addDays(30);
+    }
+
+
+    public static function countTotal($user_id){
+        return self::where('user_id', $user_id)->count();
     }
 }

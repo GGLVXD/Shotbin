@@ -8,7 +8,8 @@
 </head>
 <body>
     <x-dashboard.navbar>
-        Welcome {{ Auth::user()->name }}
+        Welcome {{ Auth::user()->name }} <br>
+        Total files: {{ \App\Models\Files::countTotal(Auth::user()->id) }}
     </x-dashboard.navbar>
     <script src="/js/showprofilemenu.js"></script>
 </body>

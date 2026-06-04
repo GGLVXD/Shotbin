@@ -36,7 +36,7 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn" href="/signup">Signup</a>
-    <a class="btn" href="/signin">Sigin</a>
+    <a class="btn mr-2" href="/signup">Register</a>
+    <a class="btn" href="/signin">Login</a>
   </div>
 </div>
