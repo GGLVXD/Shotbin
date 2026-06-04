@@ -20,6 +20,13 @@
             <span>Files</span>
           </a>
         </li>
+        <li>
+          <a href="/upload" class="tooltip tooltip-right" data-tip="Files">
+            <!-- Upload icon -->
+            <img src="/icons/upload.png" width="16" height="16" alt="Files">
+            <span>Upload</span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

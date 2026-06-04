@@ -13,9 +13,9 @@
         <p>File Path: {{ session('file') }}</p>
     @endif
 
-    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data" class="fieldset">
         @csrf
-        <input type="file" name="file">
+        <input type="file" name="file" class="file-input">
         <button type="submit">Upload</button>
     </form>
 
