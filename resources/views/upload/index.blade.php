@@ -24,23 +24,14 @@
             </div>
         @endif
 
-        <form id="upload-form" class="space-y-4">
+        <form id="upload-form" class="space-y-4" action="/upload" method="POST">
             @csrf
 
-            <input
-                type="file"
-                name="files[]"
-                id="files"
-                multiple
-                class="file-input w-full"
-            >
+            <input type="file" name="files[]" id="files" multiple class="file-input w-full">
 
             <ul id="file-list" class="space-y-2"></ul>
 
-            <button
-                type="submit"
-                class="btn btn-primary w-full sm:w-auto"
-            >
+            <button type="submit" class="btn btn-primary w-full sm:w-auto">
                 Upload Files
             </button>
         </form>
