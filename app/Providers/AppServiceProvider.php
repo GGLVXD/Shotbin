@@ -1,23 +1,18 @@
 <?php
-
+ 
 namespace App\Providers;
-
+ 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-
+ 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot()
     {
-        //
+        $this->configureSecureUrls();
     }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+ 
+    protected function configureSecureUrls()
     {
         // Determine if HTTPS should be enforced
         $enforceHttps = $this->app->environment(['production', 'staging'])
