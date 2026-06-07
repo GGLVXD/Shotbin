@@ -16,7 +16,9 @@ class UploadController extends Controller
     }
 
 public function store(Request $request){
-    Files::FileQuota(Auth::id());
+    $totalUploadSize = collect($request->file('files'))->sum(fn($file) => $file->getSize());
+    $lol = Files::FileQuota(Auth::id(), $totalUploadSize);
+    dd($lol);
     $request->validate([
         'files' => 'required|array|min:1',
         'files.*' => 'required|file|max:102400',

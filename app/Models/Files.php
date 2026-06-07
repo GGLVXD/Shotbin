@@ -77,18 +77,40 @@ class Files extends Model
     }
     // checks if file doenst go over the quota limit
     public static function FileQuota(?int $userId, $requestFileSize){
+        $totalFileSize = self::where('user_id', $userId)->sum('size');
+        $fileQuota = 607876;
+        $newQuotaUsage = $totalFileSize + $requestFileSize;
         // checks if user is a guest or not
-        if(!$userId){ 
-            $totalFileSize = self::where('user_id', $userId)->sum('size');
-            $fileQuota = 5 * 1024 * 1024 * 1024;
+        if($userId){ 
             // check if doesnt go over 5gb quota
-            if ($fileQuota > ($totalFileSize + $requestFileSize)){
-                return true;
+            if ($fileQuota > $newQuotaUsage) {
+                return [
+                true, 
+                'signedin' => true,
+                'newquotausage' => $newQuotaUsage,
+                'quotausedbefore' => (int)$totalFileSize, // for some reason it was a string
+                'requestfilesize' => $requestFileSize,
+                'totalquota' => $fileQuota
+                ];
             } else {
-                return false;
+                return [
+                false, 
+                'signedin' => true,
+                'newquotausage' => $newQuotaUsage,
+                'quotausedbefore' => (int)$totalFileSize,
+                'requestfilesize' => $requestFileSize,
+                'totalquota' => $fileQuota
+                ];
             }
         } else {
-            return true;
+            return [
+            true, 
+            'signedin' => true,
+            'newquotausage' => $newQuotaUsage,
+            'quotausedbefore' => (int)$totalFileSize, 
+            'requestfilesize' => $requestFileSize,
+            'totalquota' => $fileQuota
+            ];
         }
     }
 }
