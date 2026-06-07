@@ -66,6 +66,7 @@ class Files extends Model
         }
         return false;
     }
+    // expiry of the files
     protected static function FileExpiry(){
 
         return now()->addDays(30);
@@ -73,5 +74,21 @@ class Files extends Model
     // get total count of files for user
     public static function countTotal($user_id){
         return self::where('user_id', $user_id)->count();
+    }
+    // checks if file doenst go over the quota limit
+    public static function FileQuota(?int $userId, $requestFileSize){
+        // checks if user is a guest or not
+        if(!$userId){ 
+            $totalFileSize = self::where('user_id', $userId)->sum('size');
+            $fileQuota = 5 * 1024 * 1024 * 1024;
+            // check if doesnt go over 5gb quota
+            if ($fileQuota > ($totalFileSize + $requestFileSize)){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
     }
 }

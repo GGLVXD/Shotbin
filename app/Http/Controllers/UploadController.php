@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Files;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class UploadController extends Controller
@@ -13,8 +15,8 @@ class UploadController extends Controller
         return view('upload.index');
     }
 
-public function store(Request $request)
-{
+public function store(Request $request){
+    Files::FileQuota(Auth::id());
     $request->validate([
         'files' => 'required|array|min:1',
         'files.*' => 'required|file|max:102400',
