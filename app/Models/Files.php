@@ -32,13 +32,15 @@ class Files extends Model
     // format file sizes for non byte readers
     public static function formatFileSize($file){
         $fileSize = $file->size;
-
-        if ($fileSize >= 1000000000) {
-            return round($fileSize / 1000000000, 2) . 'GB';
-        } elseif ($fileSize >= 1000000) {
-            return round($fileSize / 1000000, 2) . 'MB';
-        } elseif ($fileSize >= 1000) {
-            return round($fileSize / 1000, 2) . 'KB';
+        $gigabyte = 1 * 1024 * 1024 * 1024;
+        $megabyte = 1 * 1024 * 1024;
+        $kilobyte = 1 * 1024;
+        if ($fileSize >= $gigabyte) {
+            return round($fileSize / $gigabyte, 2) . 'GB';
+        } elseif ($fileSize >= $megabyte) {
+            return round($fileSize / $megabyte, 2) . 'MB';
+        } elseif ($fileSize >= $kilobyte) {
+            return round($fileSize / $kilobyte, 2) . 'KB';
         }
 
         return $fileSize.'B';
