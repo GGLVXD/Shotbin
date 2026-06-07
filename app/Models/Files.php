@@ -78,7 +78,7 @@ class Files extends Model
     // checks if file doenst go over the quota limit
     public static function FileQuota(?int $userId, $requestFileSize){
         $totalFileSize = self::where('user_id', $userId)->sum('size');
-        $fileQuota = 607876;
+        $fileQuota = 5 * 1024 * 1024 * 1024;
         $newQuotaUsage = $totalFileSize + $requestFileSize;
         // checks if user is a guest or not
         if($userId){ 

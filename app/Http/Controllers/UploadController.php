@@ -16,9 +16,14 @@ class UploadController extends Controller
     }
 
 public function store(Request $request){
+    // gets the size of all uploaded files
     $totalUploadSize = collect($request->file('files'))->sum(fn($file) => $file->getSize());
-    $lol = Files::FileQuota(Auth::id(), $totalUploadSize);
-    dd($lol);
+    // checks if files dont exceed the disk quota
+    $quotaCheck = Files::FileQuota(Auth::id(), $totalUploadSize);
+    if(!$quotaCheck[0]){
+        return response()->json(['error'=>'File quota exceeded'], 500);
+    };
+
     $request->validate([
         'files' => 'required|array|min:1',
         'files.*' => 'required|file|max:102400',
