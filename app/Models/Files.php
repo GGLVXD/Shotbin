@@ -18,6 +18,10 @@ class Files extends Model
     protected $table = "files";
     protected $fillable = ['name', 'user_id', 'path', 'expire_at', 'url_id', 'size'];
 
+    protected $casts = [
+        'expire_at' => 'datetime',
+    ];
+
     // Creates a new entry in file in files table
     public static function createFileEntry(?int $userId, $file, $path, $fileSize){
         return self::create([
@@ -76,6 +80,12 @@ class Files extends Model
             return now()->addDays(30);
         }
     }
+    // formats to more readable format
+    protected static function formatFileExpiry($file){
+        return $file->expire_at->format('d.m.Y H:i');
+    }
+
+
     // get total count of files for user
     public static function countTotal($user_id){
         return self::where('user_id', $user_id)->count();
