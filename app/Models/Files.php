@@ -24,7 +24,7 @@ class Files extends Model
             'name' => $file->getClientOriginalName(),
             'user_id' => $userId,
             'path' => $path,
-            'expire_at' => null, //self::FileExpiry()
+            'expire_at' => self::FileExpiry(),
             'url_id' => Str::random(16),
             'size' => $fileSize,
         ]);
@@ -70,8 +70,11 @@ class Files extends Model
     }
     // expiry of the files
     protected static function FileExpiry(){
-
-        return now()->addDays(30);
+        if(Auth::user()){
+            return now()->addDays(120);
+        } else {
+            return now()->addDays(30);
+        }
     }
     // get total count of files for user
     public static function countTotal($user_id){
