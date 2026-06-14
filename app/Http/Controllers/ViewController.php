@@ -11,15 +11,24 @@ class ViewController extends Controller
 {
     public function index($urlId){
         // filter files BY user and get them
-        $findFile = Files::where('url_id', $urlId)->firstOrFail();
+        $file = Files::where('url_id', $urlId)->firstOrFail();
+
+        // checks if file is expired
+        if($file->expire_at < now()){
+            return abort(404);
+        }
         return view('view.index', [
-            'file' => $findFile
+            'file' => $file
         ]);
     }
     public function download($urlId){
         // finds the file by url_id
-        $findFile = Files::where('url_id', $urlId)->firstOrFail();
+        $file = Files::where('url_id', $urlId)->firstOrFail();
+        // checks if file is expired
+        if($file->expire_at < now()){
+            return abort(404);
+        }
         // download file
-        return Storage::disk('s3')->download($findFile->path);
+        return Storage::disk('s3')->download($file->path);
     }
 }
