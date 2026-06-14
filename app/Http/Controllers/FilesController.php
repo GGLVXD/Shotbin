@@ -11,7 +11,7 @@ class FilesController extends Controller
 {
     public function index(){
         // filter files BY user and get them
-        $files = Files::where('user_id', Auth::id())->get();
+        $files = Files::getFiles();
         return view('dashboard.filemanager.index', compact('files'));
     }
 

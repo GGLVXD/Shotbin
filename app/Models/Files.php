@@ -128,4 +128,13 @@ class Files extends Model
             ];
         }
     }
+
+    // gets all the files from db
+    public static function getFiles(){
+
+        // filters out expired files
+        return self::where('user_id', Auth::id())
+            ->where('expire_at', '>=', now())
+            ->get();
+        }
 }
