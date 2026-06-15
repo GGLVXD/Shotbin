@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\admin;
 
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +57,5 @@ Route::post('/upload', [UploadController::class, 'store'])->name('file.upload');
 
 Route::get('/view/{urlId}', [ViewController::class, 'index']);
 Route::get('/view/{urlId}/download', [ViewController::class, 'download']);
+
+Route::get('/admin', [admin::class,'index']);
