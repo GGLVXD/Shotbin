@@ -12,6 +12,8 @@
                 <div class="flex-1">
                     <div>{{ $file->name }}</div>
 
+                    Owner: {{ $file->user?->name ?? 'guest' }}
+
                     <div class="text-xs text-base-content/60">
                         Expires {{ \App\Models\Files::formatFileExpiry($file) }}
                     </div>

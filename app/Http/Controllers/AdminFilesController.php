@@ -11,6 +11,6 @@ class AdminFilesController extends Controller
     public function index(){
         // filter files BY user and get them
         $files = Files::with('user')->get();
-        return view('dashboard.admin.filelist', compact('files'));
+        return view('dashboard.admin.filemanager.index', compact('files'));
     }
 }
