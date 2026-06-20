@@ -8,6 +8,8 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminFilesController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -60,4 +62,5 @@ Route::get('/view/{urlId}/download', [ViewController::class, 'download']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin/files', [AdminFilesController::class, 'index']);
 });

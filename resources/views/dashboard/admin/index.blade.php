@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<x-dashboard.navbar>
+<x-dashboard.admin.navbar>
     <div class="p-6 space-y-6">
 
         <div class="flex justify-between items-center">
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <!-- Storage -->
+            <!-- Users -->
             <div class="bg-white rounded-xl shadow-sm border-l-4 border-blue-500 p-5 flex items-center gap-4">
                 <div class="text-blue-500 text-3xl"><img height="32px" width="32px" src="/icons/user.png"></img></div>
                 <div>
@@ -61,7 +61,7 @@
         </div>
 
     </div>
-</x-dashboard.navbar>
+</x-dashboard.admin.navbar>
     <script src="/js/showprofilemenu.js"></script>
 </body>
 </html>

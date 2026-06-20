@@ -137,4 +137,8 @@ class Files extends Model
             ->where('expire_at', '>=', now())
             ->get();
         }
+    // file owner
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
