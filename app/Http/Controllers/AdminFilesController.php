@@ -9,7 +9,7 @@ use App\Models\Files;
 class AdminFilesController extends Controller
 {
     public function index(){
-        // filter files BY user and get them
+        // gets all files
         $files = Files::with('user')->get();
         return view('dashboard.admin.filemanager.index', compact('files'));
     }
